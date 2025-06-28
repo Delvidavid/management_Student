@@ -1,9 +1,9 @@
 import time
 
-
 listStudents = {}
 flag = True
 
+# validar cadena de numeros y que sean positivos, mostrando mensajes de error
 def validateNumber(messages):
     while flag:
         numberId = input(messages)
@@ -11,6 +11,8 @@ def validateNumber(messages):
             return int(numberId)
         print("❌ Please enter a valid age greater than 0.")
 
+
+# controlar el rango de notas permitidas , mostrando mensajes de error
 def validateNotes(messages):
     while flag:
         try:
@@ -22,6 +24,8 @@ def validateNotes(messages):
         except ValueError:
             print("❌ Please, Enter a number valid.")
 
+
+# validar cadena de texto , mostrando mensajes de error
 def validateName(messeges):
     while flag:
         nameInput = input(messeges).strip()
@@ -33,7 +37,7 @@ def validateName(messeges):
         else:
             return nameInput
 
-
+# Ingresar datos para el diccionario
 def registerStudent():
     id = input("Enter the number ID: ").strip()
     if not id:
@@ -61,6 +65,8 @@ def registerStudent():
     
     print("✅ student successfully registered .\n")
 
+
+#mostrar los datos de cada estudiante por medio de la identificacion 
 def consultStudent():
     id = input("Enter the Id number: ").strip()
     student = listStudents.get(id)
@@ -74,6 +80,8 @@ def consultStudent():
     else:
         print("❌ Student not found.\n")
 
+
+#Actualizar las notas de cada estudiante
 def updateNotes():
     id = input("Enter the Id number: ").strip()
     if id in listStudents:
@@ -87,6 +95,7 @@ def updateNotes():
     else:
         print("❌ Student not found.\n")
 
+# eliminar los datos del estudiante, si existe uno 
 def deleteStudent():
     id = input("Enter the Id number: ").strip()
     if id in listStudents:
@@ -95,6 +104,7 @@ def deleteStudent():
     else:
         print("❌ Student not found.\n")
 
+# Mostrar todos alumnos agregados con sus respetivos datos
 def showStudent():
     if not listStudents:
         print("📭 There are no registered students.\n")
@@ -105,13 +115,13 @@ def showStudent():
         print(f"ID: {id} | Nombre: {datos['name']} | Edad: {datos['age']} | Promedio: {average:.2f}")
     
     
-    
+# Animacion en el mensaje al salir 
 def printLate(text, delay=0.08):
     for letter in text:
         print(letter, end='', flush=True)
         time.sleep(delay)
     
-
+# Menu principal con cada una de sus opciones
 def menu():
     while flag:
         print("===== MAIN MENÚ =====")
